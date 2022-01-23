@@ -5,7 +5,7 @@ jobs:
   build:
     name: Build multi-architecture image
     env:
-      IMAGE_NAME: deck-chores
+      IMAGE_NAME: test
     runs-on: ubuntu-latest
     steps:
 
@@ -71,4 +71,4 @@ jobs:
         with:
           registry: ghcr.io/${{ github.actor }}
           image: ${{ steps.build-image.outputs.image }}
-          # tags: ${{ steps.push-tags-value.outputs.tags }}
+          tags: ${{ steps.push-tags-value.outputs.tags }}
