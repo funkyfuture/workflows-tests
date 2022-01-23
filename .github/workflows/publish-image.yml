@@ -57,7 +57,7 @@ jobs:
 
       - name: prepare push tag value
         id: push-tags-value
-        run: echo "::set-output tags=${{ steps.docker-metadata.outputs.tags }}" | tr "\n" " " | sed "s/${{ env.IMAGE_NAME }}://g"
+        run: echo "::set-output name=tags::${{ steps.docker-metadata.outputs.tags }}" | tr "\n" " " | sed "s/${{ env.IMAGE_NAME }}://g"
 
       - run: echo ${{ steps.push-tags-value.outputs.tags }}
 
@@ -71,4 +71,4 @@ jobs:
         with:
           registry: ghcr.io/${{ github.actor }}
           image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.push-tags-value.outputs.tags }}
+          # tags: ${{ steps.push-tags-value.outputs.tags }}
