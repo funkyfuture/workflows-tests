@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: abatilo/actions-poetry@v2.1.0
-      - run: echo "VERSION=1.2.3" >> $GITHUB_ENV
+      - run: echo "VERSION=1.2.4" >> $GITHUB_ENV
       - run: >
           echo "PRERELEASE=false" >> $GITHUB_ENV
       - name: echo version related variables
