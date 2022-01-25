@@ -1,0 +1,27 @@
+name: test a chain of jobs
+
+on: workflow_dispatch
+
+jobs:
+  sayno:
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.sayno.outputs.result }}
+    steps:
+      - id: sayno
+        run: echo "::set-output name=result::false"
+      - if: ${{ steps.sayno.outputs.result }} == "false"
+        run: gh run cancel ${{ github.run_id }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  other:
+    needs: [sayno]
+    uses: funkyfuture/workflows-tests/.github/workflows/other.yml@main
+
+  assert:
+    needs: [other]
+    if: ${{ needs.sayno.outputs.result }} == "true"
+    runs-on: ubuntu-latest
+    steps:
+      - run: "false"
