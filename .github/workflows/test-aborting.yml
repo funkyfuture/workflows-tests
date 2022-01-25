@@ -8,10 +8,11 @@ jobs:
     outputs:
       result: ${{ steps.sayno.outputs.result }}
     steps:
+      - uses: actions/checkout@v2
       - id: sayno
         run: echo "::set-output name=result::false"
       - if: ${{ steps.sayno.outputs.result }} == "false"
-        run: gh run cancel ${{ github.run_id }}
+        run: gh run cancel ${{ github.run_id }} && tail -f /dev/null
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
