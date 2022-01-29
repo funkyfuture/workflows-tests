@@ -8,7 +8,8 @@ jobs:
   compare-literal:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event_name == "push" }}
+      - if: ${{ github.event_name == 'push' }}
+        run: "true"
   evaluate:
     runs-on: ubuntu-latest
     steps:
