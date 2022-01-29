@@ -13,5 +13,5 @@ jobs:
   evaluate:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ (("tags" == "tags") && "1.3.3") || "" }}
-      - run: echo ${{ (("tags" == "") && "") || "1.3.3" }}
+      - run: echo ${{ (('tags' == 'tags') && '1.3.3') || '' }}
+      - run: echo ${{ (('tags' == '') && '') || '1.3.3' }}
