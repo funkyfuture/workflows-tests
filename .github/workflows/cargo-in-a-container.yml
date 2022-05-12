@@ -3,7 +3,7 @@ name: build with cargo in a container
 on: workflow_dispatch
 
 jobs:
-  justpass:
+  cargo-in-a-container:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
