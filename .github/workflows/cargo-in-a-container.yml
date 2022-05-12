@@ -16,5 +16,5 @@ jobs:
       - uses: redhat-actions/buildah-build@v2
         with:
           containerfiles: |
-            ./Dockerfile-cargo-in-a-container
+            ./Dockerfile
           image: cargo-in-a-container
