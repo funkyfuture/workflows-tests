@@ -1,0 +1,22 @@
+name: build with cargo in a container
+
+on: workflow_dispatch
+
+jobs:
+  justpass:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install dependency for multi-platform builds
+        run: |
+          sudo apt update
+          sudo apt install -y qemu-user-static
+
+      - id: build-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          containerfiles: |
+            ./Dockerfile-cargo-in-a-container
+          image: ${{ env.IMAGE_NAME }}
+          platforms: linux/amd64,linux/arm,linux/arm64
