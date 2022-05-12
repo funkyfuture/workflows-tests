@@ -18,5 +18,5 @@ jobs:
         with:
           containerfiles: |
             ./Dockerfile-cargo-in-a-container
-          image: ${{ env.IMAGE_NAME }}
+          image: cargo-in-a-container
           platforms: linux/amd64,linux/arm,linux/arm64
