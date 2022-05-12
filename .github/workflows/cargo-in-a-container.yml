@@ -6,7 +6,7 @@ jobs:
   cargo-in-a-container:
     runs-on: ubuntu-latest
     steps:
-      - uses: DamianReeves/write-file-action
+      - uses: DamianReeves/write-file-action@v1.0
         with:
           path: ./Dockerfile
           contents: |
